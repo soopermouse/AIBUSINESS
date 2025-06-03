@@ -26,7 +26,7 @@
                     @click="activeService = activeService === 'optimization' ? null : 'optimization'"
                     :class="activeService === 'optimization' ? 'scale-110 bg-blue-900/50' : 'bg-slate-800/50'"
                     class="service-circle aspect-square rounded-full metallic-border flex flex-col items-center justify-center p-4 cursor-pointer transition-all duration-500"
-                    data-url="{{ path('ai_optimization') }}"
+                    data-url="{{ path('home') }}"
                 >
                     <div class="w-16 h-16 sm:w-20 sm:h-20 mb-4 bg-blue-900/30 rounded-full flex items-center justify-center metallic-border">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -41,7 +41,7 @@
 
                 <!-- AI Automation -->
                 <div
-                    @click="activeService === 'automation' ? window.location.href='{{ path('ai_automation') }}' : activeService = 'automation'"
+                    @click="activeService === 'automation' ? window.location.href='{{ path('home') }}' : activeService = 'automation'"
                     :class="activeService === 'automation' ? 'scale-110 bg-blue-900/50' : 'bg-slate-800/50'"
                     class="service-circle aspect-square rounded-full metallic-border flex flex-col items-center justify-center p-4 cursor-pointer"
                 >
@@ -59,7 +59,7 @@
 
                 <!-- AI Marketing Services -->
                 <div
-                    @click="activeService === 'marketing' ? window.location.href='{{ path('ai_marketing') }}' : activeService = 'marketing'"
+                    @click="activeService === 'marketing' ? window.location.href='{{ path('home') }}' : activeService = 'marketing'"
                     :class="activeService === 'marketing' ? 'scale-110 bg-blue-900/50' : 'bg-slate-800/50'"
                     class="service-circle aspect-square rounded-full metallic-border flex flex-col items-center justify-center p-4 cursor-pointer"
                 >
@@ -76,7 +76,7 @@
 
                 <!-- AI Personnel Services -->
                 <div
-                    @click="activeService === 'personnel' ? window.location.href='{{ path('ai_personnel') }}' : activeService = 'personnel'"
+                    @click="activeService === 'personnel' ? window.location.href='{{ path('home') }}' : activeService = 'personnel'"
                     :class="activeService === 'personnel' ? 'scale-110 bg-blue-900/50' : 'bg-slate-800/50'"
                     class="service-circle aspect-square rounded-full metallic-border flex flex-col items-center justify-center p-4 cursor-pointer"
                 >
