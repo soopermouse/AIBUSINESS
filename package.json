@@ -1,0 +1,17 @@
+{
+  "name": "AIBusinessServices",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "@alpinejs/collapse": "^3.14.9",
+    "@alpinejs/focus": "^3.14.9",
+    "alpinejs": "^3.14.9"
+  },
+  "main": "index.js",
+  "repository": "https://github.com/soopermouse/AIBUSINESS",
+  "author": "simona thrussell <sdthrussell@gmail.com>",
+  "devDependencies": {
+    "@symfony/webpack-encore": "^5.1.0",
+    "webpack-notifier": "^1.15.0"
+  }
+}

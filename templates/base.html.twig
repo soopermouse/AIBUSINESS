@@ -35,7 +35,12 @@
             transform: translateY(-10px) scale(1.05);
             box-shadow: 0 10px 25px rgba(100, 149, 237, 0.4);
         }
+        [x-cloak] { display: none !important; }
     </style>
+    {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
 </head>
 <body class="antialiased">
 {% include 'partials/_header.html.twig' %}
@@ -65,5 +70,10 @@
         });
     });
 </script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+{% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
 </body>
 </html>
