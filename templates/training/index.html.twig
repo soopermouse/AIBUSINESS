@@ -1,20 +1,106 @@
-{% extends 'base.html.twig' %}
+{% extends 'home/index.html.twig' %}
 
-{% block title %}Hello TrainingController!{% endblock %}
+{% block content %}
+    <div class="relative min-h-screen">
+        <!-- Background elements from original design -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-slate-900/50"></div>
+            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=2232&auto=format&fit=crop')] bg-cover bg-center opacity-10"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(148,163,184,0.1)_0%,transparent_70%)]"></div>
+        </div>
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <!-- Top Text Area -->
+            <div class="text-center mb-16 metallic-border bg-slate-800/50 rounded-xl p-8 backdrop-blur-sm">
+                <h1 class="text-4xl sm:text-5xl font-bold metallic-text mb-6">{{ page_title|default('Our Services') }}</h1>
+                <p class="text-xl text-blue-200 max-w-4xl mx-auto">
+                    {{ top_text|default('Discover how our AI solutions can transform your business operations and drive innovation across all departments.') }}
+                </p>
+            </div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+            <!-- Three Card Section -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <!-- Card 1 -->
+                <div class="metallic-border bg-slate-800/50 rounded-xl p-6 hover:bg-slate-800/70 transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="w-16 h-16 mb-4 bg-blue-900/30 rounded-full flex items-center justify-center metallic-border mx-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold metallic-text text-center mb-4">AI Optimization</h3>
+                    <p class="text-slate-300 text-sm text-center mb-4">
+                        Streamline operations with our intelligent optimization algorithms that learn and adapt to your business patterns.
+                    </p>
+                    <div class="text-center">
+                        <a href="{{ path('home') }}" class="inline-block px-4 py-2 text-sm font-medium text-blue-300 hover:text-white border border-blue-400 rounded-lg hover:bg-blue-900/30 transition-colors duration-300">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>D:/AIBusinessServices/src/Controller/TrainingController.php</code></li>
-        <li>Your template at <code>D:/AIBusinessServices/templates/training/index.html.twig</code></li>
-    </ul>
-</div>
+                <!-- Card 2 -->
+                <div class="metallic-border bg-slate-800/50 rounded-xl p-6 hover:bg-slate-800/70 transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="w-16 h-16 mb-4 bg-blue-900/30 rounded-full flex items-center justify-center metallic-border mx-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold metallic-text text-center mb-4">AI Automation</h3>
+                    <p class="text-slate-300 text-sm text-center mb-4">
+                        Automate repetitive tasks and workflows with our cutting-edge AI solutions tailored to your specific needs.
+                    </p>
+                    <div class="text-center">
+                        <a href="{{ path('home') }}" class="inline-block px-4 py-2 text-sm font-medium text-blue-300 hover:text-white border border-blue-400 rounded-lg hover:bg-blue-900/30 transition-colors duration-300">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="metallic-border bg-slate-800/50 rounded-xl p-6 hover:bg-slate-800/70 transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="w-16 h-16 mb-4 bg-blue-900/30 rounded-full flex items-center justify-center metallic-border mx-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold metallic-text text-center mb-4">AI Analytics</h3>
+                    <p class="text-slate-300 text-sm text-center mb-4">
+                        Gain powerful insights with our AI-driven analytics platform that reveals hidden patterns and opportunities.
+                    </p>
+                    <div class="text-center">
+                        <a href="{{ path('home') }}" class="inline-block px-4 py-2 text-sm font-medium text-blue-300 hover:text-white border border-blue-400 rounded-lg hover:bg-blue-900/30 transition-colors duration-300">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Text Area -->
+            <div class="metallic-border bg-slate-800/50 rounded-xl p-8 backdrop-blur-sm">
+                <h2 class="text-2xl sm:text-3xl font-bold metallic-text mb-6 text-center">Why Choose Our AI Solutions?</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-lg font-semibold text-blue-300 mb-3">Cutting-Edge Technology</h3>
+                        <p class="text-slate-300">
+                            We utilize the latest advancements in artificial intelligence and machine learning to deliver solutions that are not just current, but future-proof.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-blue-300 mb-3">Tailored To Your Needs</h3>
+                        <p class="text-slate-300">
+                            Every business is unique. Our AI solutions are customized to fit your specific requirements and integrate seamlessly with your existing systems.
+                        </p>
+                    </div>
+                </div>
+                <div class="mt-8 text-center">
+                    <a href="{{ path('contact') }}" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 transition-all duration-300 transform hover:scale-105">
+                        Get Started Today
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 -mr-1 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

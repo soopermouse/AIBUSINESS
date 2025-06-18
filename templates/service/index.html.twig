@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'index.html.twig' %}
 
 {% block title %}Hello ServiceController!{% endblock %}
 
@@ -8,13 +8,23 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+{% block text %}
+    <h2>We offer the following services</h2>
+    <h4>AI Automation Services</h4>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>D:/AIBusinessServices/src/Controller/ServiceController.php</code></li>
-        <li>Your template at <code>D:/AIBusinessServices/templates/service/index.html.twig</code></li>
-    </ul>
-</div>
+    <p>One of the dirtiest secrets of today's business world is that many of the operations of your business can be automated using AI.</p>
+    <p>Many businesses oput there are still prisoner to the 1970s protocols and rules.</p>
+    <p>But the world has changed, and there is no need to stick to outdated paradigms</p>
+    <p>Because every little bit matters when you want that edge over your competitors</p>
+    <p> Cut your personnel costs and maintain your edge while allowing the bleeding edge of innovation into your life</p>
+    <p>AI HR Services</p>
+    <p>Automate your recruitment and HR processes. Solving problems before they occur</p>
+    <p>HI Accounting</p>
+    <p>AI Marketing</p>
+    <p>Marketing strategies built for your business, using the bleeding edge of AI and marketing sciences</p>
+    <p>AI Payroll</p>
+    <p>Automated payroll services directly plugged into your Business Systems.</p>
+    <p>AI Sales</p>
+    {% endblock %}
+
 {% endblock %}
