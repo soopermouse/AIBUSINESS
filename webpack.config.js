@@ -1,17 +1,17 @@
 const Encore = require('@symfony/webpack-encore');
+const path = require('path');
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
-// It's useful when you use tools that rely on webpack.config.js file.
 if (!Encore.isRuntimeEnvironmentConfigured()) {
     Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
 }
 
 Encore
-    // directory where compiled assets will be stored
+    // Directory where compiled assets will be stored
     .setOutputPath('public/build/')
-    // public path used by the web server to access the output path
+    // Public path used by the web server to access the output path
     .setPublicPath('/build')
-    // only needed for CDN's or subdirectory deploy
+    // Only needed for CDN's or subdirectory deploy
     //.setManifestKeyPrefix('build/')
 
     /*
@@ -25,8 +25,7 @@ Encore
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
 
-    // will require an extra script tag for runtime.js
-    // but, you probably want this, unless you're building a single-page app
+    // Will require an extra script tag for runtime.js
     .enableSingleRuntimeChunk()
 
     /*
@@ -42,35 +41,24 @@ Encore
     // .enableBuildNotifications()
 
     .enableSourceMaps(!Encore.isProduction())
-    // enables hashed filenames (e.g. app.abc123.css)
+    // Enables hashed filenames (e.g. app.abc123.css)
     .enableVersioning(Encore.isProduction())
 
-    // configure Babel
-    // .configureBabel((config) => {
-    //     config.plugins.push('@babel/a-babel-plugin');
-    // })
-
-    // enables and configure @babel/preset-env polyfills
+    // Configure Babel
     .configureBabelPresetEnv((config) => {
         config.useBuiltIns = 'usage';
         config.corejs = '3.38';
     })
 
-    // enables Sass/SCSS support
-    //.enableSassLoader()
 
-    // uncomment if you use TypeScript
-    //.enableTypeScriptLoader()
+    // Enables PostCSS support
+    .enablePostCssLoader()
 
-    // uncomment if you use React
-    //.enableReactPreset()
+    // Add alias for @symfony/stimulus-bridge/controllers.json
+    .addAliases({
+        '@symfony/stimulus-bridge/controllers.json': path.resolve(__dirname, 'assets/controllers.json'),
+    });
 
-    // uncomment to get integrity="..." attributes on your script & link tags
-    // requires WebpackEncoreBundle 1.4 or higher
-    //.enableIntegrityHashes(Encore.isProduction())
-
-    // uncomment if you're having problems with a jQuery plugin
-    //.autoProvidejQuery()
-;
+module.exports = Encore.getWebpackConfig();
 
 module.exports = Encore.getWebpackConfig();

@@ -5,13 +5,30 @@
   "dependencies": {
     "@alpinejs/collapse": "^3.14.9",
     "@alpinejs/focus": "^3.14.9",
-    "alpinejs": "^3.14.9"
+    "@hotwired/stimulus": "^3.2.2",
+    "@hotwired/turbo": "^8.0.13",
+    "@symfony/stimulus-bridge": "^4.0.1",
+    "@symfony/ux-turbo": "^2.26.1",
+    "alpinejs": "^3.14.9",
+    "core-js": "3"
   },
   "main": "index.js",
   "repository": "https://github.com/soopermouse/AIBUSINESS",
   "author": "simona thrussell <sdthrussell@gmail.com>",
   "devDependencies": {
-    "@symfony/webpack-encore": "^5.1.0",
-    "webpack-notifier": "^1.15.0"
+    "@babel/core": "^7.x",
+    "@babel/preset-env": "^7.x",
+    "@symfony/webpack-encore": "^5.x",
+    "babel-loader": "^9.x",
+    "postcss-loader": "^8.1.0",
+    "webpack": "^5.x",
+    "webpack-cli": "^5.x",
+    "webpack-notifier": "^1.x"
+  },
+  "scripts": {
+    "dev-server": "encore dev-server",
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production"
   }
 }

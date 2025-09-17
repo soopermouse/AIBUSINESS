@@ -1,22 +1,28 @@
-import './bootstrap.js';
-/*
- * Welcome to your app's main JavaScript file!
- *
- * This file will be included onto the page via the importmap() Twig function,
- * which should already be in your base.html.twig.
- */
-import './styles/app.css';
+import 'core-js/stable'
 
-console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
+import Alpine from 'alpinejs'
+import Collapse from '@alpinejs/collapse'
+import Focus from '@alpinejs/focus' // You have this installed too
 
-import Alpine from 'alpinejs';
-window.Alpine = Alpine;
+// Initialize plugins FIRST
+Alpine.plugin(Collapse)
+Alpine.plugin(Focus)
 
-// Optional plugins
-import focus from '@alpinejs/focus';
-import collapse from '@alpinejs/collapse';
-Alpine.plugin(focus);
-Alpine.plugin(collapse);
+// Then assign to window and start
+window.Alpine = Alpine
+Alpine.start()
 
-// Initialize Alpine
-Alpine.start();
+console.log('Alpine initialized with:', Object.keys(Alpine._plugins)) // Should show ["collapse", "focus"]
+
+// Safe resize handler with version check
+const handleResize = _.debounce(() => {
+    if (!window.Alpine?.version) return
+
+    const isMobile = window.innerWidth < 768
+    Alpine.store('app', {
+        isMobile,
+        // Add other store properties here
+    })
+}, 200)
+
+window.addEventListener('resize', handleResize)

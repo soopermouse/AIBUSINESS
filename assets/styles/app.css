@@ -1,3 +1,25 @@
-body {
-    background-color: skyblue;
+[x-cloak] {
+    display: none !important;
 }
+
+/* Remove the skyblue background */
+body {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: #e2e8f0;
+    min-height: 100vh;
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* Essential Alpine.js styles */
+[x-cloak] { display: none !important; }
+
+/* Menu transitions */
+.menu-enter-active, .menu-leave-active {
+    transition: opacity 0.3s ease;
+}
+.menu-enter-from, .menu-leave-to {
+    opacity: 0;
+}
+
+
+

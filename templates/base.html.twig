@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}AI Business Services{% endblock %}</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.0/dist/cdn.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    {# In your base template head #}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
-    {# Before closing body tag #}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+    <script src="{{ asset('build/runtime.js') }}" defer></script>
+    <script src="{{ asset('build/app.js') }}" defer></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" defer></script>-->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap');
         body {
@@ -18,6 +18,12 @@
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: #e2e8f0;
             min-height: 100vh;
+        }
+        @media (min-width: 768px) {
+            .desktop-menu-force {
+                display: flex !important;
+                background-color: red !important; /* Debug color */
+            }
         }
         .metallic-text {
             color: #e2e8f0;
@@ -35,45 +41,47 @@
             transform: translateY(-10px) scale(1.05);
             box-shadow: 0 10px 25px rgba(100, 149, 237, 0.4);
         }
-        [x-cloak] { display: none !important; }
+        [x-cloak] {
+            display: none !important;
+        }
     </style>
     {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
 </head>
 <body class="antialiased">
 {% include 'partials/_header.html.twig' %}
-
 <main class="min-h-screen">
     {% block content %}{% endblock %}
 </main>
-
 {% include 'partials/_footer.html.twig' %}
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Smooth transitions between pages
-        const links = document.querySelectorAll('a[href^="/"]');
-
-        links.forEach(link => {
-            link.addEventListener('click', function(e) {
-                if (!this.getAttribute('data-no-transition')) {
+{% block javascripts %}
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Smooth transitions between pages, excluding menu links
+            const links = document.querySelectorAll('a[href^="/"]:not([data-no-transition]):not([data-turbo="false"])');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
                     e.preventDefault();
                     document.body.classList.add('opacity-0', 'transition-opacity', 'duration-300');
-
                     setTimeout(() => {
                         window.location.href = this.href;
                     }, 300);
-                }
+                });
             });
+
+            // Resize handler for mobile menu
+            const mobileMenu = document.querySelector('[x-data*="mobileMenuOpen"]');
+            const handleResize = () => {
+                if (window.innerWidth >= 768 && mobileMenu) {
+                    mobileMenu.__x.$data.mobileMenuOpen = open;
+                    console.log('Resize: Closed mobile menu');
+                }
+            };
+            window.addEventListener('resize', handleResize);
+            handleResize();
         });
-    });
-</script>
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-{% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-    {{ encore_entry_script_tags('app') }}
+    </script>
 {% endblock %}
 </body>
 </html>
